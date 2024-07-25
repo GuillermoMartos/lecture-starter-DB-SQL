@@ -1,6 +1,11 @@
 # lecture-starter-DB-SQL
 Binary Studio Code Bootcamp 2024 DB and SQL
 
+PostgreSQL DB Setup: 
+create DB run: `psql postgres -f ddl.statements.sql`
+populate DB run: `psql movies_exercise_db -f populate.tables.sql`
+first query run: `psql movies_exercise_db -f firstQuery.sql`
+
 ```mermaid
 erDiagram
     
