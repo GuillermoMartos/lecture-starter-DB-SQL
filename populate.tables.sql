@@ -19,10 +19,10 @@ VALUES
 (uuid_generate_v4(), 'johndoe', 'John', 'Doe', 'john.doe@example.com', 'password123'),
 (uuid_generate_v4(), 'janedoe', 'Jane', 'Doe', 'jane.doe@example.com', 'password456');
 
-INSERT INTO MOVIE (id, title, description, budget, releaseDate, duration, countryCode, posterURL, director_id) VALUES
-(uuid_generate_v4(), 'Epic Battle', 'A grand battle between heroes and villains.', 50000000, '2023-10-15', 145, 'BOL', 'http://example.com/epic_battle.jpg', (SELECT id FROM PERSONA WHERE firstName = 'Mike' AND lastName = 'Johnson')),
-(uuid_generate_v4(), 'Comedy Night', 'A night of hilarious events and surprises.', 20000000, '2023-05-10', 90, 'UKR', 'http://example.com/comedy_night.jpg', (SELECT id FROM PERSONA WHERE firstName = 'Mike' AND lastName = 'Johnson')),
-(uuid_generate_v4(), 'Adventure Quest', 'An adventurous quest through uncharted territories.', 30000000, '2019-08-20', 210, 'ARG', 'http://example.com/adventure_quest.jpg', (SELECT id FROM PERSONA WHERE firstName = 'Mike' AND lastName = 'Johnson'));
+INSERT INTO MOVIE (title, description, budget, releaseDate, duration, countryCode, posterURL, director_id) VALUES
+('Epic Battle', 'A grand battle between heroes and villains.', 50000000, '2023-10-15', 145, 'BOL', 'http://example.com/epic_battle.jpg', (SELECT id FROM PERSONA WHERE firstName = 'Mike' AND lastName = 'Johnson')),
+('Comedy Night', 'A night of hilarious events and surprises.', 20000000, '2023-05-10', 90, 'UKR', 'http://example.com/comedy_night.jpg', (SELECT id FROM PERSONA WHERE firstName = 'Mike' AND lastName = 'Johnson')),
+('Adventure Quest', 'An adventurous quest through uncharted territories.', 30000000, '2019-08-20', 210, 'ARG', 'http://example.com/adventure_quest.jpg', (SELECT id FROM PERSONA WHERE firstName = 'Mike' AND lastName = 'Johnson'));
 
 INSERT INTO FILE (id, MIMEType, key, fileType, publicURL, user_id, persona_id, movie_id, createdAt, updatedAt)
 VALUES 
@@ -81,7 +81,8 @@ INSERT INTO MOVIE_PERSONA (movie_id, persona_id) VALUES
 INSERT INTO MOVIE_GENRE (movie_id, genre_id) VALUES
 ((SELECT id FROM MOVIE WHERE title = 'Epic Battle'), (SELECT id FROM GENRE WHERE name = 'Action')),
 ((SELECT id FROM MOVIE WHERE title = 'Comedy Night'), (SELECT id FROM GENRE WHERE name = 'Comedy')),
-((SELECT id FROM MOVIE WHERE title = 'Adventure Quest'), (SELECT id FROM GENRE WHERE name = 'Action'));
+((SELECT id FROM MOVIE WHERE title = 'Adventure Quest'), (SELECT id FROM GENRE WHERE name = 'Action')),
+((SELECT id FROM MOVIE WHERE title = 'Adventure Quest'), (SELECT id FROM GENRE WHERE name = 'Comedy'));
 
 INSERT INTO USER_FAVORITES(movie_id, user_id)VALUES
 ((SELECT id FROM MOVIE WHERE title = 'Epic Battle'), (SELECT id FROM APP_USER WHERE userName = 'johndoe')),

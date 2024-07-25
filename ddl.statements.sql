@@ -72,7 +72,7 @@ CREATE TABLE PERSONA (
 );
 
 CREATE TABLE MOVIE (
-    id UUID PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     title VARCHAR(255) UNIQUE NOT NULL,
     description TEXT,
     budget NUMERIC,
@@ -95,7 +95,7 @@ CREATE TABLE FILE (
     publicURL VARCHAR(255) NOT NULL,
     user_id UUID,
     persona_id UUID,
-    movie_id UUID,
+    movie_id INTEGER,
     CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES APP_USER(id),
     CONSTRAINT fk_persona_id FOREIGN KEY(persona_id) REFERENCES PERSONA(id),
     CONSTRAINT fk_movie_id FOREIGN KEY(movie_id) REFERENCES MOVIE(id),
@@ -120,14 +120,14 @@ CREATE TABLE CHARACTER (
     name VARCHAR(255) NOT NULL,
     description TEXT,
     role movie_role_type NOT NULL,
-    movie_id UUID,
+    movie_id INTEGER,
     CONSTRAINT fk_movie_id FOREIGN KEY(movie_id) REFERENCES MOVIE(id) ON DELETE CASCADE,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE USER_FAVORITES (
-    movie_id UUID,
+    movie_id INTEGER,
     user_id UUID,
     CONSTRAINT fk_movie_id FOREIGN KEY(movie_id) REFERENCES MOVIE(id) ON DELETE CASCADE,
     CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES APP_USER(id) ON DELETE CASCADE,
@@ -136,7 +136,7 @@ CREATE TABLE USER_FAVORITES (
 );
 
 CREATE TABLE MOVIE_GENRE (
-    movie_id UUID,
+    movie_id INTEGER,
     genre_id UUID,
     CONSTRAINT fk_movie_id FOREIGN KEY(movie_id) REFERENCES MOVIE(id) ON DELETE CASCADE,
     CONSTRAINT fk_genre_id FOREIGN KEY(genre_id) REFERENCES GENRE(id),
@@ -145,7 +145,7 @@ CREATE TABLE MOVIE_GENRE (
 );
 
 CREATE TABLE MOVIE_PERSONA (
-    movie_id UUID,
+    movie_id INTEGER,
     persona_id UUID,
     CONSTRAINT fk_movie_id_persona FOREIGN KEY(movie_id) REFERENCES MOVIE(id) ON DELETE CASCADE,
     CONSTRAINT fk_persona_id_movie FOREIGN KEY(persona_id) REFERENCES PERSONA(id),
@@ -154,7 +154,7 @@ CREATE TABLE MOVIE_PERSONA (
 );
 
 CREATE TABLE MOVIE_CHARACTER (
-    movie_id UUID,
+    movie_id INTEGER,
     character_id UUID,
     CONSTRAINT fk_movie_id_character FOREIGN KEY(movie_id) REFERENCES MOVIE(id) ON DELETE CASCADE,
     CONSTRAINT fk_character_id_movie FOREIGN KEY(character_id) REFERENCES CHARACTER(id),
