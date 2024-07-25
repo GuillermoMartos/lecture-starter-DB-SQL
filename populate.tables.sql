@@ -83,3 +83,8 @@ INSERT INTO MOVIE_GENRE (movie_id, genre_id) VALUES
 ((SELECT id FROM MOVIE WHERE title = 'Epic Battle'), (SELECT id FROM GENRE WHERE name = 'Action')),
 ((SELECT id FROM MOVIE WHERE title = 'Comedy Night'), (SELECT id FROM GENRE WHERE name = 'Comedy')),
 ((SELECT id FROM MOVIE WHERE title = 'Adventure Quest'), (SELECT id FROM GENRE WHERE name = 'Action'));
+
+INSERT INTO USER_FAVORITES(movie_id, user_id)VALUES
+((SELECT id FROM MOVIE WHERE title = 'Epic Battle'), (SELECT id FROM APP_USER WHERE userName = 'johndoe')),
+((SELECT id FROM MOVIE WHERE title = 'Comedy Night'), (SELECT id FROM APP_USER WHERE userName = 'janedoe')),
+((SELECT id FROM MOVIE WHERE title = 'Adventure Quest'), (SELECT id FROM APP_USER WHERE userName = 'janedoe'));

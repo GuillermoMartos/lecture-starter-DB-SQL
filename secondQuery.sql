@@ -13,4 +13,5 @@ JOIN PERSONA p
 ON p.id= mp.persona_id
 WHERE p.role='actor'
 GROUP BY m.id
+ORDER BY actors_featured DESC
 ;
