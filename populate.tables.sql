@@ -73,7 +73,6 @@ INSERT INTO MOVIE_PERSONA (movie_id, persona_id) VALUES
 ((SELECT id FROM MOVIE WHERE title = 'Epic Battle'), (SELECT id FROM PERSONA WHERE completeName = 'John Doe')),
 ((SELECT id FROM MOVIE WHERE title = 'Epic Battle'), (SELECT id FROM PERSONA WHERE completeName = 'Emily Davis')),
 ((SELECT id FROM MOVIE WHERE title = 'Epic Battle'), (SELECT id FROM PERSONA WHERE completeName = 'Jane Smith')),
-((SELECT id FROM MOVIE WHERE title = 'Comedy Night'), (SELECT id FROM PERSONA WHERE completeName = 'Mike Johnson')),
 ((SELECT id FROM MOVIE WHERE title = 'Comedy Night'), (SELECT id FROM PERSONA WHERE completeName = 'Emily Davis')),
 ((SELECT id FROM MOVIE WHERE title = 'Adventure Quest'), (SELECT id FROM PERSONA WHERE completeName = 'Emily Davis')),
 ((SELECT id FROM MOVIE WHERE title = 'Adventure Quest'), (SELECT id FROM PERSONA WHERE completeName = 'Jane Smith')),
